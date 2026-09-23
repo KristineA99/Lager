@@ -39,7 +39,7 @@ Hvilke andre målinger de tar, for eksempel pH, alkoholprosent, syre eller sulfi
 Tankene er merket med RFID. Man skal kunne skanne en strekkode og spore historikken tilbake. Hvis flere dårlige sidere har vært innom samme tank, kan det tyde på at noe er galt med tanken, så systemet må kunne vise dette.
 
 - Det bør avklares hva strekkoden sitter på: hver flaske, hver kartong eller hver pall.
-Det vanligste er at hver tapping får et bach-nummer som trykkes på etiketten eller kartongen, og at bach-nummeret peker til batchen. Man bør også kunne merke en batch som «dårlig» med en kommentar, slik at systemet kan finne tanker som går igjen i dårlige batcher. Tanken kan i tillegg få sin egen logg over vask og vedlikehold, som ofte er forklaringen når en tank gir problemer.
+Det vanligste er at hver tapping får et batch-nummer som trykkes på etiketten eller kartongen, og at batch-nummeret peker til batchen. Man bør også kunne merke en batch som «dårlig» med en kommentar, slik at systemet kan finne tanker som går igjen i dårlige batcher. Tanken kan i tillegg få sin egen logg over vask og vedlikehold, som ofte er forklaringen når en tank gir problemer.
 
 **Lager**
 Man må vite hvor sideren og varene er lagret, altså hvilket lager eller hvilken lagerplass.
