@@ -52,7 +52,7 @@ namespace Lager.Models
 
         // Varsling når beholdning er et viss antall
         [Range(0, int.MaxValue)]
-        [Display (Name = "Varsle ved")]
+        [Display (Name = "Varsle under")]
         public int MinimumStock { get; set; }
 
         // Beregnes, lagres ikke i databasen. Brukes til varsler.
