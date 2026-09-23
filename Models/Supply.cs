@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.Net.Http.Headers;
 
 namespace Lager.Models
 {
     public enum SupplyCategory
     {
-        Embalasje, // flasker, korker, etiketter, kartonger
+        Emballasje, // flasker, korker, etiketter, kartonger
         Ingredienser, // gjær, næringssalter, humle
-        Rengjøreing, // vaskemidler for tanker og utstyr
+        Rengjøring, // vaskemidler for tanker og utstyr
     }
 
     // Innsatsvarer: det som går INN i produksjonen.
@@ -28,12 +27,12 @@ namespace Lager.Models
         public SupplyCategory Category { get; set; }
 
         // Vare enhet ("stk", "kg", "liter" osv.) Gjør at 500 stk korker og 2,5 kg gjær kan ligge i samme tabell.
-        [Required(ErrorMessage = "Oppgi enhet, f.eks. stk elle kg")]
+        [Required(ErrorMessage = "Oppgi enhet, f.eks. stk eller kg")]
         [StringLength(20)]
         [Display(Name = "Enhet")]
         public string Unit { get; set; } = "stk";
 
-        // Vare volum
+        // Lagerbeholdning
         [Range(0, 1000000, ErrorMessage = "Lagerbeholdning kan ikke være negativ")]
         [Display(Name = "På lager")]
         public decimal QuantityInStock { get; set; }
@@ -43,7 +42,7 @@ namespace Lager.Models
         [Display(Name = "Varsle under")]
         public decimal MinimumStock { get; set; }
  
-        // Vare lerandør
+        // Vare leverandør
         [StringLength(100)]
         [Display(Name = "Leverandør")]
         public string? Supplier { get; set; }
