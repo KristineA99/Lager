@@ -6,7 +6,8 @@ namespace Lager.Models
     public enum SupplyCategory
     {
         Emballasje, // flasker, korker, etiketter, kartonger
-        Ingredienser, // gjær, næringssalter, humle
+        Ingredienser, // gjær, næringssalter
+        Smak, // humle, rips, bringebær osv.
         Rengjøring, // vaskemidler for tanker og utstyr
     }
 
