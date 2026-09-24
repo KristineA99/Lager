@@ -95,10 +95,12 @@ namespace Lager.DAL
                     // Ingredienser
                     new Supply { Name = "Sidergjær",        Category = SupplyCategory.Ingrediens, Unit = "kg",  QuantityInStock = 2.5m, MinimumStock = 1,   StorageLocation = kjolelager, Supplier = "PLASSHOLDER" },
                     new Supply { Name = "Gjærnæring",       Category = SupplyCategory.Ingrediens, Unit = "kg",  QuantityInStock = 0.5m, MinimumStock = 1,   StorageLocation = varelager },  // under minimum
-                    new Supply { Name = "Humle",            Category = SupplyCategory.Ingrediens, Unit = "kg",  QuantityInStock = 4,    MinimumStock = 1,   StorageLocation = kjolelager },
-                    new Supply { Name = "Bringebær",        Category = SupplyCategory.Ingrediens, Unit = "kg",  QuantityInStock = 20,   MinimumStock = 5,   StorageLocation = kjolelager },
-                    new Supply { Name = "Rips",             Category = SupplyCategory.Ingrediens, Unit = "kg",  QuantityInStock = 10,   MinimumStock = 5,   StorageLocation = kjolelager },
-
+                    
+                    // Smakstilsetning
+                    new Supply { Name = "Humle",            Category = SupplyCategory.Smakstilsetning, Unit = "kg",  QuantityInStock = 4,    MinimumStock = 1,   StorageLocation = kjolelager },
+                    new Supply { Name = "Bringebær",        Category = SupplyCategory.Smakstilsetning, Unit = "kg",  QuantityInStock = 20,   MinimumStock = 5,   StorageLocation = kjolelager },
+                    new Supply { Name = "Rips",             Category = SupplyCategory.Smakstilsetning, Unit = "kg",  QuantityInStock = 10,   MinimumStock = 5,   StorageLocation = kjolelager },
+                
                     // Rengjøring
                     new Supply { Name = "Tankvask",         Category = SupplyCategory.Rengjoring, Unit = "liter", QuantityInStock = 25, MinimumStock = 10, StorageLocation = varelager }
                 };
