@@ -13,6 +13,9 @@ builder.Services.AddDbContext<LagerDbContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:LagerDbContextConnection"]);
 });
 
+// Registrerer ProductRepository (dependency injection).
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 var app = builder.Build();
 // Fyller databasen med startdata når vi utvikler (ikke i produksjon)
 if (app.Environment.IsDevelopment())
