@@ -15,6 +15,9 @@ builder.Services.AddDbContext<LagerDbContext>(options =>
 
 // Registrerer ProductRepository (dependency injection).
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+ 
+// Registrerer SupplyRepository (dependency injection).
+builder.Services.AddScoped<ISupplyRepository, SupplyRepository>();
 
 var app = builder.Build();
 // Fyller databasen med startdata når vi utvikler (ikke i produksjon)
