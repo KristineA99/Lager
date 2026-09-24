@@ -32,7 +32,7 @@ namespace Lager.Models
         public string? Name { get; set; }
 
         // Hvilket produkt batchen skal bli (fremmednøkkel til Product)
-        // int? gjør det valgfritt å fylle inn. Fordi man ikke alltid vet hvilker sidertype den skal bli. (?)
+        // int? gjør det valgfritt å fylle inn. Fordi man ikke alltid vet hvilker sidertype den skal bli.
         [Display(Name = "Produkt-id")]
         public int? ProductId { get; set; }
         public virtual Product? Product { get; set; }
