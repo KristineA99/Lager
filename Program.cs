@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore; // Gir tilgang til Entity Framework (UseSqlite osv.)
+using Lager.DAL; // Gir tilgang til LagerDbContext i DAL-mappa
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Registrerer databasen i appen (dependency injection).
+// Adressen til databasen hentes fra "LagerDbContextConnection" i appsettings.json.
+builder.Services.AddDbContext<LagerDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:LagerDbContextConnection"]);
+});
 
 var app = builder.Build();
 
