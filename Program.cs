@@ -14,6 +14,11 @@ builder.Services.AddDbContext<LagerDbContext>(options =>
 });
 
 var app = builder.Build();
+// Fyller databasen med startdata når vi utvikler (ikke i produksjon)
+if (app.Environment.IsDevelopment())
+{
+    DBInit.Seed(app);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
