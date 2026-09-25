@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;   // Gir oss Controller, IActionResult, [HttpGet], [HttpPost]
-using Lager.DAL;                  // Gir oss IProductRepository
-using Lager.Models;               // Gir oss Product
+using Microsoft.AspNetCore.Mvc;   
+using Lager.DAL;                  
+using Lager.Models;               
 
 namespace Lager.Controllers
 {
-    // Controlleren er kelneren: tar imot forespørselen fra nettleseren,
-    // ber repositoryet (kjøkkenet) om data, og sender riktig visning (tallerken) tilbake.
-    // Navnet "ProductController" gjør at URL-ene blir /Product/Table, /Product/Create osv.
+    // ber repositoryet om data, og sender riktig visning tilbake.
     public class ProductController : Controller
     {
         // Repositoryet vi får fra dependency injection (registrert i Program.cs)
@@ -109,9 +107,7 @@ namespace Lager.Controllers
             return View(product);
         }
 
-        // POST /Product/DeleteConfirmed: sletter faktisk
-        // Heter noe annet enn Delete fordi C# ikke tillater to metoder
-        // med samme navn og samme parametre (begge tar int id)
+        // POST /Product/DeleteConfirmed: sletter!
         [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
