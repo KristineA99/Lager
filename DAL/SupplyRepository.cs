@@ -52,7 +52,7 @@ public class SupplyRepository : ISupplyRepository
 
     public async Task<IEnumerable<Supply>?> GetLowStock()
 {
-    // Henter alle produkter der beholdningen er på eller under minimum
+    // Henter alle innsatsvarer der beholdningen er på eller under minimum
     return await _db.Supplies
         .Where(p => p.QuantityInStock <= p.MinimumStock)
         .ToListAsync();
@@ -62,7 +62,7 @@ public async Task<bool> AdjustStock(int id, decimal change)
 {
     var supply = await _db.Supplies.FindAsync(id);
     if (supply == null)
-        return false;   // produktet finnes ikke
+        return false;   // innsatsvare finnes ikke
 
     // Forretningsregel: beholdningen kan aldri bli negativ
     if (supply.QuantityInStock + change < 0)
