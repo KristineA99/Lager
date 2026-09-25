@@ -1,0 +1,55 @@
+@* @model sier hvilken type data visningen får fra controlleren.
+   Må stemme med det som sendes i return View(products). *@
+@model IEnumerable<Product>
+
+<h1>Produkter</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nytt produkt</a>
+</p>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Navn</th>
+            <th>Type</th>
+            <th>Volum</th>
+            <th>Pris</th>
+            <th>På lager</th>
+            <th>Varsle under</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @* Går gjennom hvert produkt og lager én rad *@
+        @foreach (var product in Model)
+        {
+            @* Rød rad hvis tomt, gul rad hvis lavt, ellers ingen farge *@
+            var rowClass = product.QuantityInStock == 0 ? "table-danger"
+                         : product.IsLowStock ? "table-warning"
+                         : "";
+
+            <tr class="@rowClass">
+                <td>
+                    <a asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a>
+                </td>
+                <td>@product.Type</td>
+                <td>@product.VolumeMl ml</td>
+                <td>@product.Price kr</td>
+                <td>
+                    @product.QuantityInStock
+                    @if (product.IsLowStock)
+                    {
+                        <span class="badge bg-danger ms-1">Lavt</span>
+                    }
+                </td>
+                <td>@product.MinimumStock</td>
+                <td class="text-end">
+                    @* asp-route-id legger ID-en på slutten av URL-en: /Product/Update/3 *@
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Update" asp-route-id="@product.ProductId">Endre</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@product.ProductId">Slett</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

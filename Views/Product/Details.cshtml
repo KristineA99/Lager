@@ -1,0 +1,46 @@
+@model Product
+
+<h1>@Model.Name</h1>
+
+<div class="row">
+    @* Viser bildet bare hvis produktet har et *@
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <div class="col-md-4 mb-3">
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded" />
+        </div>
+    }
+
+    <div class="col-md-8">
+        @* dl/dt/dd = en liste med "overskrift: verdi" *@
+        <dl class="row">
+            <dt class="col-sm-4">Type</dt>
+            <dd class="col-sm-8">@Model.Type</dd>
+
+            <dt class="col-sm-4">Volum</dt>
+            <dd class="col-sm-8">@Model.VolumeMl ml</dd>
+
+            <dt class="col-sm-4">Pris</dt>
+            <dd class="col-sm-8">@Model.Price kr</dd>
+
+            <dt class="col-sm-4">På lager</dt>
+            <dd class="col-sm-8">
+                @Model.QuantityInStock flasker
+                @if (Model.IsLowStock)
+                {
+                    <span class="badge bg-danger ms-1">Under minimum</span>
+                }
+            </dd>
+
+            <dt class="col-sm-4">Varsle under</dt>
+            <dd class="col-sm-8">@Model.MinimumStock flasker</dd>
+
+            <dt class="col-sm-4">Beskrivelse</dt>
+            <dd class="col-sm-8">@(Model.Description ?? "Ingen beskrivelse")</dd>
+        </dl>
+
+        <a class="btn btn-primary" asp-action="Update" asp-route-id="@Model.ProductId">Endre</a>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.ProductId">Slett</a>
+        <a class="btn btn-link" asp-action="Table">Tilbake til lista</a>
+    </div>
+</div>

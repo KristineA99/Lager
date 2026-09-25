@@ -1,0 +1,62 @@
+@model Product
+
+<h1>Endre @Model.Name</h1>
+
+<form asp-action="Update" method="post" class="col-md-6">
+
+    @* VIKTIG: skjult felt med ID-en, så databasen vet HVILKET produkt som skal endres.
+       Uten denne ville ProductId vært 0, og endringen ville feilet. *@
+    <input type="hidden" asp-for="ProductId" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label"></label>
+        <select asp-for="Type" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-select"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="VolumeMl" class="form-label"></label>
+        <input asp-for="VolumeMl" class="form-control" />
+        <span asp-validation-for="VolumeMl" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImageUrl" class="form-label"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+    </div>
+
+    <div class="row">
+        <div class="col mb-3">
+            <label asp-for="QuantityInStock" class="form-label"></label>
+            <input asp-for="QuantityInStock" class="form-control" />
+            <span asp-validation-for="QuantityInStock" class="text-danger"></span>
+        </div>
+        <div class="col mb-3">
+            <label asp-for="MinimumStock" class="form-label"></label>
+            <input asp-for="MinimumStock" class="form-control" />
+            <span asp-validation-for="MinimumStock" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lagre endringer</button>
+    <a class="btn btn-link" asp-action="Details" asp-route-id="@Model.ProductId">Avbryt</a>
+</form>

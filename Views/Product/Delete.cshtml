@@ -1,0 +1,22 @@
+@model Product
+
+<h1>Slette produkt?</h1>
+
+<div class="alert alert-warning">
+    Er du sikker på at du vil slette <strong>@Model.Name</strong>? Dette kan ikke angres.
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Type</dt>
+    <dd class="col-sm-9">@Model.Type</dd>
+
+    <dt class="col-sm-3">På lager</dt>
+    <dd class="col-sm-9">@Model.QuantityInStock flasker</dd>
+</dl>
+
+@* Skjemaet sender ID-en til [HttpPost] DeleteConfirmed i controlleren *@
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.ProductId" />
+    <button type="submit" class="btn btn-danger">Ja, slett</button>
+    <a class="btn btn-link" asp-action="Table">Avbryt</a>
+</form>
